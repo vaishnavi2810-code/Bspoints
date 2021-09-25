@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,12 +22,15 @@ import javax.swing.table.DefaultTableModel;
  * @author Dell
  */
 public class Transaction extends javax.swing.JFrame {
-
+public LogIn login=new LogIn();
+int store=login.getStore();
+int role=login.getRole();
     /**
      * Creates new form Transaction
      */
     public Transaction() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -159,15 +163,17 @@ public ArrayList<TransactionData> TransactionData(){
     Connection conn=null;
     conn=ConnectionManager.getConnection();
     String mob=mobile_no.getText();
-            String query1="select uId from tbl_allusers where uMobile=?";
-            int uid=0;
+            String query1="select * from tbl_allusers where uMobile=?";
+            int uid=0,store_id=0;
             PreparedStatement pst1=conn.prepareStatement(query1);
             pst1.setString(1,mob);
             ResultSet rs1=pst1.executeQuery();
             if(rs1.next()){
                 uid=rs1.getInt("uId");
+                store_id=rs1.getInt("uStore");
             }
             //SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+            if(role==1 || (role==2 && store_id==store)){
             java.util.Date d1=start_date.getDate();
             java.sql.Date startDate=new java.sql.Date(d1.getTime());
             //String startDate=formatter.format(d1);
@@ -187,7 +193,11 @@ public ArrayList<TransactionData> TransactionData(){
             while(rs2.next()){
                 data=new TransactionData(rs2.getString("type"),rs2.getString("value"),rs2.getString("points"),rs2.getDate("transDate"));
                 td.add(data);
-            }      
+            }
+            }
+            else if(role==2 && store_id!=store){
+                JOptionPane.showMessageDialog(this,"You don't have the access to this store details");
+            }
     }
     catch (ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());
