@@ -21,12 +21,15 @@ import javax.swing.JOptionPane;
  * @author Dell
  */
 public class form1 extends javax.swing.JFrame {
-
+public LogIn login=new LogIn();
+int storeid_extracted=login.getStore();
+int roleid_extracted=login.getRole();
     /**
      * Creates new form form1
      */
     public form1() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -232,6 +235,7 @@ public class form1 extends javax.swing.JFrame {
             if(rs1.next()){
                 roleid=rs1.getInt("uRole");
                 storeid=rs1.getInt("uStore");
+                if(roleid_extracted==1 || (roleid_extracted==2 && storeid_extracted==storeid)){
                 String query2="select roleName from tbl_roles where roleId=?";
                 PreparedStatement pst2=conn.prepareStatement(query2);
                 pst2.setInt(1,roleid);
@@ -250,11 +254,11 @@ public class form1 extends javax.swing.JFrame {
                     roles.setSelectedItem(rolename);
                     stores.setSelectedItem(storename);
                     dob.setDate(rs1.getDate("dob"));
-                    
                 }
-
-                
-                
+                }
+                else if(roleid_extracted==2 && storeid_extracted!=storeid){
+                    JOptionPane.showMessageDialog(this,"You don't have the access to this store details");
+                }  
             }
             
             // TODO add your handling code here:
@@ -299,31 +303,35 @@ public class form1 extends javax.swing.JFrame {
                 roleid=rs2.getInt(1);
                 //emailid=rs4.getString("uEmail");
             }
-            if(count==0){
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-            java.util.Date d1=dob.getDate();
-            String newDate=formatter.format(d1);
-            String query3="update tbl_allusers set uName=?,ulName=?,uStore=?,dob=?,address=?,uEmail=?,uRole=? where uMobile=?";
-            pst3=conn.prepareStatement(query3);
-            pst3.setString(1,fname.getText());
-            pst3.setString(2,lname.getText());
-            pst3.setInt(3,storeid);
-            pst3.setDate(4,java.sql.Date.valueOf(newDate));
-            pst3.setString(5,add.getText());
-           
+            if(count==0 && (roleid_extracted==1 || (roleid_extracted==2 && storeid_extracted==storeid))){
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                java.util.Date d1=dob.getDate();
+                String newDate=formatter.format(d1);
+                String query3="update tbl_allusers set uName=?,ulName=?,uStore=?,dob=?,address=?,uEmail=?,uRole=? where uMobile=?";
+                pst3=conn.prepareStatement(query3);
+                pst3.setString(1,fname.getText());
+                pst3.setString(2,lname.getText());
+                pst3.setInt(3,storeid);
+                pst3.setDate(4,java.sql.Date.valueOf(newDate));
+                pst3.setString(5,add.getText());
+                
                 //JOptionPane.showMessageDialog(this,"email id already exists");
-            
-           
-            pst3.setString(6,email.getText());
-            
-            pst3.setInt(7,roleid);
-            pst3.setString(8,mobile.getText());
-            pst3.executeUpdate();
-            JOptionPane.showMessageDialog(this,"updated");
+                
+                
+                pst3.setString(6,email.getText());
+                
+                pst3.setInt(7,roleid);
+                pst3.setString(8,mobile.getText());
+                pst3.executeUpdate();
+                JOptionPane.showMessageDialog(this,"updated");
+                
+            }
+            else if(roleid_extracted==2 && storeid!=storeid_extracted){
+                JOptionPane.showMessageDialog(this,"You don't have the access to this store details");
             }
              else{
                 JOptionPane.showMessageDialog(this,"email id already exists");
-                }
+            }
             
         }
         
