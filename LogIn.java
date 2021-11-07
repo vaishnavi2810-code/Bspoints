@@ -161,6 +161,10 @@ else{
                 u_role=rs1.getInt("uRole");
                 u_store=rs1.getInt("uStore");
             }
+            else{
+                JOptionPane.showMessageDialog(this,"Invalid Credentials");
+                return;
+            }
             System.out.println(u_role);
             System.out.println(u_store);
             
@@ -180,10 +184,14 @@ else{
                 u_role=rs2.getInt("uRole");
                 u_store=rs2.getInt("uStore");
             }
+            else{
+                JOptionPane.showMessageDialog(this,"Invalid Credentials");
+                return;
+            }
             System.out.println(u_role);
             System.out.println(u_store);
             JOptionPane.showMessageDialog(this,"Login successfull");
-            new Main().setVisible(false);
+            new Main().setVisible(true);
             setVisible(false);
             
                        

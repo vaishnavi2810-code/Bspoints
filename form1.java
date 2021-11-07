@@ -24,6 +24,7 @@ public class form1 extends javax.swing.JFrame {
 public LogIn login=new LogIn();
 int storeid_extracted=login.getStore();
 int roleid_extracted=login.getRole();
+static String mobileno="";
     /**
      * Creates new form form1
      */
@@ -63,6 +64,8 @@ int roleid_extracted=login.getRole();
         stores = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        wallet = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,13 +117,27 @@ int roleid_extracted=login.getRole();
 
         jLabel10.setText("Search user by mobile number!");
 
+        jLabel11.setText("Wallet:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(196, 196, 196)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addGap(53, 53, 53))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(view_user)
+                        .addGap(140, 140, 140)
+                        .addComponent(edit_user)
+                        .addGap(99, 99, 99))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -130,7 +147,8 @@ int roleid_extracted=login.getRole();
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel8))
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel11))
                         .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(fname)
@@ -140,65 +158,62 @@ int roleid_extracted=login.getRole();
                             .addComponent(mobile)
                             .addComponent(dob, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(roles, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(stores, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(193, 193, 193)
-                        .addComponent(view_user)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(edit_user)
-                        .addGap(99, 99, 99))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(157, 157, 157)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                        .addComponent(jLabel10)
-                        .addGap(55, 55, 55))))
+                            .addComponent(stores, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(wallet))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(fname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(lname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(mobile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(dob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(roles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(stores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(view_user)
-                    .addComponent(edit_user))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
-                .addContainerGap(51, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(fname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(lname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(mobile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(dob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(wallet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(roles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(stores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
+                        .addGap(18, 18, 18)
+                        .addComponent(view_user)
+                        .addGap(0, 22, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(edit_user)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10))))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -223,10 +238,17 @@ int roleid_extracted=login.getRole();
 
     private void view_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_view_userActionPerformed
         try {
+            System.out.println("Hello" + mobile.getText().trim() + "Hi");
+            System.out.println("Hello" + mobile.getText() + "Hi");
+            if(mobile.getText().trim().isEmpty()){
+                JOptionPane.showMessageDialog(this,"Please enter a valid mobile number");
+            }
+            else{
             Connection conn=null;
             conn=ConnectionManager.getConnection();
-            String mob_no=mobile.getText();
-            String query1="select uName,ulName,uStore,dob,address,uEmail,uRole from tbl_allusers where uMobile=?";
+           
+            String mob_no=mobile.getText().trim();
+            String query1="select uName,ulName,uStore,dob,walletBalance,address,uEmail,uRole from tbl_allusers where uMobile=?";
             int roleid,storeid;
             String rolename,storename;
             PreparedStatement pst1=conn.prepareStatement(query1);
@@ -251,6 +273,7 @@ int roleid_extracted=login.getRole();
                     lname.setText(rs1.getString("ulName"));
                     email.setText(rs1.getString("uEmail"));
                     add.setText(rs1.getString("address"));
+                    wallet.setText(rs1.getString("walletBalance"));
                     roles.setSelectedItem(rolename);
                     stores.setSelectedItem(storename);
                     dob.setDate(rs1.getDate("dob"));
@@ -259,8 +282,12 @@ int roleid_extracted=login.getRole();
                 else if(roleid_extracted==2 && storeid_extracted!=storeid){
                     JOptionPane.showMessageDialog(this,"You don't have the access to this store details");
                 }  
+                
             }
-            
+            else if (!rs1.next()){
+                    JOptionPane.showMessageDialog(this, "This mobile number does not exist");
+                }
+            }
             // TODO add your handling code here:
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(form1.class.getName()).log(Level.SEVERE, null, ex);
@@ -272,6 +299,10 @@ int roleid_extracted=login.getRole();
     private void edit_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_userActionPerformed
         try {
             // TODO add your handling code here:
+            if(mobile.getText().trim().isEmpty()){
+               JOptionPane.showMessageDialog(this,"Please enter a valid mobile number");
+           }
+            else{
             Connection conn=null;
             conn=ConnectionManager.getConnection();
             PreparedStatement pst1,pst2,pst3,pst4;
@@ -292,22 +323,22 @@ int roleid_extracted=login.getRole();
             rs1=pst1.executeQuery();
             rs4=pst4.executeQuery();
             int count=0;
-            while(rs4.next()){
-                String stringToCompare=rs4.getString("uEmail");
-                if(email.getText().equals(stringToCompare)){
-                    count++;
+           
+                if(mobile.getText() == null ? mobileno != null : !mobile.getText().equals(mobileno)){
+                   JOptionPane.showMessageDialog(this,"You can't edit Mobile Number");
+                   return;
                 }
-            }
-            if(rs1.next()==true && rs2.next()==true ){
+            
+                 if(rs1.next()==true && rs2.next()==true ){
                 storeid=rs1.getInt(1);
                 roleid=rs2.getInt(1);
                 //emailid=rs4.getString("uEmail");
             }
-            if(count==0 && (roleid_extracted==1 || (roleid_extracted==2 && storeid_extracted==storeid))){
+                if((roleid_extracted==1 || (roleid_extracted==2 && storeid_extracted==storeid))){
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
                 java.util.Date d1=dob.getDate();
                 String newDate=formatter.format(d1);
-                String query3="update tbl_allusers set uName=?,ulName=?,uStore=?,dob=?,address=?,uEmail=?,uRole=? where uMobile=?";
+                String query3="update tbl_allusers set uName=?,ulName=?,uStore=?,dob=?,address=?,uEmail=?,uRole=?,walletBalance=? where uMobile=?";
                 pst3=conn.prepareStatement(query3);
                 pst3.setString(1,fname.getText());
                 pst3.setString(2,lname.getText());
@@ -321,7 +352,8 @@ int roleid_extracted=login.getRole();
                 pst3.setString(6,email.getText());
                 
                 pst3.setInt(7,roleid);
-                pst3.setString(8,mobile.getText());
+                pst3.setString(8,wallet.getText().trim());
+                pst3.setString(9,mobile.getText().trim());
                 pst3.executeUpdate();
                 JOptionPane.showMessageDialog(this,"updated");
                 
@@ -329,10 +361,8 @@ int roleid_extracted=login.getRole();
             else if(roleid_extracted==2 && storeid!=storeid_extracted){
                 JOptionPane.showMessageDialog(this,"You don't have the access to this store details");
             }
-             else{
-                JOptionPane.showMessageDialog(this,"email id already exists");
+             
             }
-            
         }
         
             catch (ClassNotFoundException ex) {
@@ -385,6 +415,7 @@ int roleid_extracted=login.getRole();
     private javax.swing.JTextField fname;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -400,5 +431,6 @@ int roleid_extracted=login.getRole();
     private javax.swing.JComboBox<String> roles;
     private javax.swing.JComboBox<String> stores;
     private javax.swing.JButton view_user;
+    private javax.swing.JTextField wallet;
     // End of variables declaration//GEN-END:variables
 }
